@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Florafusion Login</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f8f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .login-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+      }
+      .login-container h2 {
+        color: #3d5a40;
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      .input-box {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      .input-box input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #88a78b;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #f9fff9;
+        color: #3d5a40;
+      }
+      .input-box input:focus {
+        outline: none;
+        border-color: #3d5a40;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: #3d5a40;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .login-btn:hover {
+        background-color: #88a78b;
+      }
+      .forgot-password {
+        margin-top: 10px;
+        display: inline-block;
+        color: #3d5a40;
+        text-decoration: none;
+      }
+      .forgot-password:hover {
+        text-decoration: underline;
+      }
+      .footer-text {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #6b8f71;
+      }
+      .footer-text a {
+        color: #3d5a40;
+        text-decoration: none;
+      }
+      .footer-text a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Welcome to FloraFusion</h2>
+      <p style="color: #6b8f71; font-size: 16px">Log in to your account</p>
+      <form id="log">
+        <div class="input-box">
+          <input type="text" id="uname" placeholder="Username" required />
+        </div>
+        <div class="input-box">
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </form>
+      <p class="footer-text">
+        Don't have an account? <a href="signup.html">Sign up</a>
+      </p>
+      <p class="footer-text"><a href="index.html">Go Back To Home Page</a></p>
+    </div>
+
+    <script>
+      const form = document.getElementById("log");
+      form.onsubmit = (e) => {
+        e.preventDefault();
+
+        const uname = document.getElementById("uname").value;
+        const pwd = document.getElementById("password").value;
+
+        const bodyjson = JSON.stringify({
+          username: uname,
+          password: pwd,
+        });
+
+        fetch("http://localhost:5000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Added Content-Type header
+          },
+          body: bodyjson,
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error("Invalid credentials");
+            }
+            return res.json();
+          })
+          .then((res) => {
+            // Show toast/alert after successful login
+            alert("Login successful!");
+
+            window.localStorage.setItem("isloggedin",true)
+
+            // Redirect to index.html
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("Invalid username or password");
+          });
+      };
+    </script>
+  </body>
+</html>

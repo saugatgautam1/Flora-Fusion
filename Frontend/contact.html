@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - PlantsCafe</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f8f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .contact-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+      }
+      .contact-container h2 {
+        color: #3d5a40;
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      .input-box {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      .input-box input,
+      .input-box textarea {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #88a78b;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #f9fff9;
+        color: #3d5a40;
+      }
+      .input-box textarea {
+        resize: none;
+        height: 100px;
+      }
+      .input-box input:focus,
+      .input-box textarea:focus {
+        outline: none;
+        border-color: #3d5a40;
+      }
+      .submit-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: #3d5a40;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .submit-btn:hover {
+        background-color: #88a78b;
+      }
+      .footer-text {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #6b8f71;
+      }
+      .footer-text a {
+        color: #3d5a40;
+        text-decoration: none;
+      }
+      .footer-text a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="contact-container">
+      <h2>Contact Us</h2>
+      <p style="color: #6b8f71; font-size: 16px">
+        We’d love to hear from you! Fill out the form below.
+      </p>
+      <form>
+        <div class="input-box">
+          <input type="text" placeholder="Full Name" required />
+        </div>
+        <div class="input-box">
+          <input type="email" placeholder="Email Address" required />
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Subject" required />
+        </div>
+        <div class="input-box">
+          <textarea placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+      <p class="footer-text"><a href="index.html"> Go Back To Home Page</a>.</p>
+    </div>
+  </body>
+</html>
